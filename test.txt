@@ -1,0 +1,2 @@
+This is my confidential SecureVault test file.
+This file contains sensitive information.

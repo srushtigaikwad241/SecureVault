@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cyber Incident Management | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        .incident-page {
+            min-height: calc(100vh - 76px);
+            padding: 50px 6%;
+        }
+
+        /* HERO */
+
+        .incident-hero {
+            max-width: 1400px;
+            margin: 0 auto 30px;
+
+            padding: 32px 38px;
+
+            background: linear-gradient(
+                135deg,
+                #18284b,
+                #1e293b
+            );
+
+            border: 1px solid #334155;
+            border-radius: 20px;
+        }
+
+        .incident-hero h1 {
+            margin: 0 0 8px;
+
+            color: #f8fafc;
+            font-size: 36px;
+        }
+
+        .incident-hero p {
+            margin: 0;
+
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+
+        /* STAT CARDS */
+
+        .incident-stats {
+            max-width: 1400px;
+            margin: 0 auto 30px;
+
+            display: grid;
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .stat-card {
+            padding: 22px;
+
+            background: #1e293b;
+
+            border: 1px solid #334155;
+            border-radius: 15px;
+        }
+
+        .stat-card span {
+            display: block;
+
+            color: #94a3b8;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 0.7px;
+        }
+
+        .stat-card strong {
+            display: block;
+
+            margin-top: 8px;
+
+            color: #f8fafc;
+
+            font-size: 28px;
+        }
+
+
+        /* SECTION */
+
+        .incident-section {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .incident-section h2 {
+            margin: 0 0 8px;
+
+            color: #f8fafc;
+            font-size: 26px;
+        }
+
+        .incident-section > p {
+            margin: 0 0 25px;
+
+            color: #94a3b8;
+        }
+
+
+        /* INCIDENT CARD */
+
+        .incident-card {
+            margin-bottom: 22px;
+
+            padding: 28px;
+
+            background: #1e293b;
+
+            border: 1px solid #334155;
+            border-radius: 18px;
+        }
+
+        .incident-card:hover {
+            border-color: #475569;
+        }
+
+
+        /* HEADER */
+
+        .incident-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: flex-start;
+
+            gap: 20px;
+
+            margin-bottom: 22px;
+        }
+
+        .incident-id {
+            color: #60a5fa;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 0.8px;
+        }
+
+        .incident-header h3 {
+            margin: 7px 0 0;
+
+            color: #f8fafc;
+
+            font-size: 22px;
+        }
+
+
+        /* BADGES */
+
+        .badge {
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 8px;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .severity-high,
+        .severity-critical {
+            background: #450a0a;
+            border: 1px solid #991b1b;
+
+            color: #fca5a5;
+        }
+
+        .severity-medium {
+            background: #422006;
+            border: 1px solid #92400e;
+
+            color: #fdba74;
+        }
+
+        .severity-low {
+            background: #172554;
+            border: 1px solid #1d4ed8;
+
+            color: #93c5fd;
+        }
+
+
+        .status-open {
+            background: #450a0a;
+            border: 1px solid #991b1b;
+
+            color: #fca5a5;
+        }
+
+        .status-investigating {
+            background: #172554;
+            border: 1px solid #1d4ed8;
+
+            color: #93c5fd;
+        }
+
+        .status-resolved {
+            background: #123329;
+            border: 1px solid #166534;
+
+            color: #86efac;
+        }
+
+
+        /* DETAILS */
+
+        .incident-details {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .detail-box {
+            padding: 15px;
+
+            background: #172033;
+
+            border: 1px solid #334155;
+            border-radius: 10px;
+        }
+
+        .detail-box small {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #64748b;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 0.7px;
+        }
+
+        .detail-box strong {
+            color: #e2e8f0;
+
+            font-size: 14px;
+        }
+
+
+        /* DESCRIPTION */
+
+        .description-box {
+            padding: 18px;
+
+            background: #172033;
+
+            border: 1px solid #334155;
+            border-radius: 10px;
+
+            margin-bottom: 22px;
+        }
+
+        .description-box small {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #64748b;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .description-box p {
+            margin: 0;
+
+            color: #cbd5e1;
+
+            line-height: 1.6;
+        }
+
+
+        /* UPDATE */
+
+        .update-section {
+            padding-top: 20px;
+
+            border-top: 1px solid #334155;
+        }
+
+        .update-section h4 {
+            margin: 0 0 12px;
+
+            color: #f8fafc;
+        }
+
+        .update-form {
+            display: flex;
+
+            gap: 10px;
+            align-items: center;
+        }
+
+        .status-select {
+            padding: 11px 14px;
+
+            min-width: 180px;
+
+            background: #0f172a;
+
+            color: #e2e8f0;
+
+            border: 1px solid #475569;
+            border-radius: 8px;
+        }
+
+        .update-button {
+            padding: 11px 18px;
+
+            background: #1d4ed8;
+
+            color: white;
+
+            border: 1px solid #2563eb;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+        }
+
+        .update-button:hover {
+            background: #2563eb;
+        }
+
+
+        /* EMPTY */
+
+        .empty-box {
+            padding: 60px 20px;
+
+            text-align: center;
+
+            background: #1e293b;
+
+            border: 1px solid #334155;
+            border-radius: 18px;
+        }
+
+        .empty-box h3 {
+            margin: 0 0 8px;
+
+            color: #f8fafc;
+        }
+
+        .empty-box p {
+            margin: 0;
+
+            color: #94a3b8;
+        }
+
+
+        /* BACK */
+
+        .back-section {
+            max-width: 1400px;
+
+            margin: 25px auto 0;
+
+            text-align: right;
+        }
+
+        .back-button {
+            display: inline-block;
+
+            padding: 11px 18px;
+
+            background: #172554;
+
+            color: #dbeafe;
+
+            border: 1px solid #1d4ed8;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: #1e3a8a;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .incident-stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .incident-details {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .incident-page {
+                padding: 30px 4%;
+            }
+
+            .incident-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .incident-details {
+                grid-template-columns: 1fr;
+            }
+
+            .incident-header {
+                flex-direction: column;
+            }
+
+            .update-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .status-select,
+            .update-button {
+                width: 100%;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🔐 SecureVault
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('admin_dashboard') }}">
+            Admin Dashboard
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- MAIN -->
+
+<main class="incident-page">
+
+
+    <!-- HERO -->
+
+    <section class="incident-hero">
+
+        <h1>
+            Cyber Incident Management
+        </h1>
+
+        <p>
+            Review reported cyber incidents and manage
+            their investigation status.
+        </p>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <section class="incident-stats">
+
+
+        <div class="stat-card">
+
+            <span>
+                TOTAL INCIDENTS
+            </span>
+
+            <strong>
+                {{ incidents|length }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                OPEN
+            </span>
+
+            <strong>
+
+                {% set open_count = 0 %}
+
+                {% for incident in incidents %}
+
+                    {% if incident.status == "Open" %}
+                        {% set open_count = open_count + 1 %}
+                    {% endif %}
+
+                {% endfor %}
+
+                {{ open_count }}
+
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                INVESTIGATING
+            </span>
+
+            <strong>
+
+                {% set investigating_count = 0 %}
+
+                {% for incident in incidents %}
+
+                    {% if incident.status == "Investigating" %}
+                        {% set investigating_count = investigating_count + 1 %}
+                    {% endif %}
+
+                {% endfor %}
+
+                {{ investigating_count }}
+
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span>
+                RESOLVED
+            </span>
+
+            <strong>
+
+                {% set resolved_count = 0 %}
+
+                {% for incident in incidents %}
+
+                    {% if incident.status == "Resolved" %}
+                        {% set resolved_count = resolved_count + 1 %}
+                    {% endif %}
+
+                {% endfor %}
+
+                {{ resolved_count }}
+
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- INCIDENTS -->
+
+    <section class="incident-section">
+
+        <h2>
+            Reported Incidents
+        </h2>
+
+        <p>
+            Review each incident and update its current status.
+        </p>
+
+
+        {% if incidents %}
+
+
+            {% for incident in incidents %}
+
+
+            <div class="incident-card">
+
+
+                <!-- HEADER -->
+
+                <div class="incident-header">
+
+                    <div>
+
+                        <span class="incident-id">
+                            INCIDENT #{{ incident.id }}
+                        </span>
+
+                        <h3>
+                            {{ incident.offence_type }}
+                        </h3>
+
+                    </div>
+
+
+                    <span class="badge
+
+                        {% if incident.severity == 'High' %}
+                            severity-high
+
+                        {% elif incident.severity == 'Critical' %}
+                            severity-critical
+
+                        {% elif incident.severity == 'Low' %}
+                            severity-low
+
+                        {% else %}
+                            severity-medium
+
+                        {% endif %}
+
+                    ">
+
+                        {{ incident.severity }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- DETAILS -->
+
+                <div class="incident-details">
+
+
+                    <div class="detail-box">
+
+                        <small>
+                            REPORTED BY
+                        </small>
+
+                        <strong>
+                            {{ incident.name or "Unknown User" }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <small>
+                            IP ADDRESS
+                        </small>
+
+                        <strong>
+                            {{ incident.ip_address or "N/A" }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <small>
+                            DATE & TIME
+                        </small>
+
+                        <strong>
+                            {{ incident.reported_at }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <small>
+                            STATUS
+                        </small>
+
+
+                        <span class="badge
+
+                            {% if incident.status == 'Open' %}
+                                status-open
+
+                            {% elif incident.status == 'Investigating' %}
+                                status-investigating
+
+                            {% else %}
+                                status-resolved
+
+                            {% endif %}
+
+                        ">
+
+                            {{ incident.status }}
+
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="description-box">
+
+                    <small>
+                        INCIDENT DESCRIPTION
+                    </small>
+
+                    <p>
+                        {{ incident.description }}
+                    </p>
+
+                </div>
+
+
+                <!-- UPDATE STATUS -->
+
+                <div class="update-section">
+
+                    <h4>
+                        Update Incident Status
+                    </h4>
+
+
+                    <form
+                        class="update-form"
+                        method="POST"
+                        action="/admin/incidents/update/{{ incident.id }}"
+                    >
+
+
+                        <select
+                            name="status"
+                            class="status-select"
+                        >
+
+                            <option value="Open"
+                                {% if incident.status == "Open" %}
+                                    selected
+                                {% endif %}
+                            >
+                                Open
+                            </option>
+
+
+                            <option value="Investigating"
+                                {% if incident.status == "Investigating" %}
+                                    selected
+                                {% endif %}
+                            >
+                                Investigating
+                            </option>
+
+
+                            <option value="Resolved"
+                                {% if incident.status == "Resolved" %}
+                                    selected
+                                {% endif %}
+                            >
+                                Resolved
+                            </option>
+
+                        </select>
+
+
+                        <button
+                            type="submit"
+                            class="update-button"
+                        >
+                            Update Status
+                        </button>
+
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <div class="empty-box">
+
+                <h3>
+                    No Cyber Incidents Reported
+                </h3>
+
+                <p>
+                    There are currently no incidents
+                    waiting for investigation.
+                </p>
+
+            </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+    <!-- BACK -->
+
+    <div class="back-section">
+
+        <a
+            href="{{ url_for('admin_dashboard') }}"
+            class="back-button"
+        >
+            ← Back to Admin Dashboard
+        </a>
+
+    </div>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    © 2026 SecureVault | Cybersecurity Project
+
+</footer>
+
+
+</body>
+
+</html>

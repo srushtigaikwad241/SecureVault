@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🔐 SecureVault
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<main class="dashboard">
+
+
+    <!-- HEADER -->
+
+    <div class="dashboard-header">
+
+        <h1>
+            Welcome, {{ session.get('user_name', 'User') }} 👋
+        </h1>
+
+        <p>
+            Your role:
+            <strong>
+                {{ session.get('role', 'User') }}
+            </strong>
+        </p>
+
+    </div>
+
+
+    <!-- ================= CARDS ================= -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- =================================================
+             ADMIN ONLY FEATURES
+             ================================================= -->
+
+        {% if session.get('role') == 'Admin' %}
+
+
+        <!-- ADMIN DASHBOARD -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🛡️
+            </div>
+
+            <h2>
+                Admin Dashboard
+            </h2>
+
+            <p>
+                Monitor users, files, failed logins
+                and security events.
+            </p>
+
+            <a href="{{ url_for('admin_dashboard') }}"
+               class="dashboard-btn">
+
+                Open Admin Dashboard
+
+            </a>
+
+        </div>
+
+
+        <!-- SECURITY ACTIVITY -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                📊
+            </div>
+
+            <h2>
+                Security Activity
+            </h2>
+
+            <p>
+                Monitor user actions, audit logs,
+                login activity and system events.
+            </p>
+
+            <a href="{{ url_for('activity') }}"
+               class="dashboard-btn">
+
+                View Security Activity
+
+            </a>
+
+        </div>
+
+
+        <!-- SECURITY ALERTS -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🚨
+            </div>
+
+            <h2>
+                Security Alerts
+            </h2>
+
+            <p>
+                Review suspicious activities,
+                failed logins and security warnings.
+            </p>
+
+            <a href="{{ url_for('security_alerts') }}"
+               class="dashboard-btn">
+
+                View Security Alerts
+
+            </a>
+
+        </div>
+
+
+        <!-- CYBER INCIDENT MANAGEMENT -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🔎
+            </div>
+
+            <h2>
+                Cyber Incident Management
+            </h2>
+
+            <p>
+                Review reported incidents and
+                manage their investigation status.
+            </p>
+
+            <a href="{{ url_for('admin_incidents') }}"
+               class="dashboard-btn">
+
+                Manage Incidents
+
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
+
+        <!-- =================================================
+             NORMAL USER + ADMIN FEATURES
+             ================================================= -->
+
+
+        <!-- ENCRYPT -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🔐
+            </div>
+
+            <h2>
+                Encrypt File
+            </h2>
+
+            <p>
+                Secure your sensitive files using
+                AES-256-GCM encryption.
+            </p>
+
+            <a href="{{ url_for('encrypt') }}"
+               class="dashboard-btn">
+
+                Encrypt File
+
+            </a>
+
+        </div>
+
+
+        <!-- DECRYPT -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🔓
+            </div>
+
+            <h2>
+                Decrypt File
+            </h2>
+
+            <p>
+                Decrypt files that you are
+                authorized to access.
+            </p>
+
+            <a href="{{ url_for('decrypt') }}"
+               class="dashboard-btn">
+
+                Decrypt File
+
+            </a>
+
+        </div>
+
+
+        <!-- FILE INTEGRITY -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🛡️
+            </div>
+
+            <h2>
+                File Integrity
+            </h2>
+
+            <p>
+                Verify file integrity using
+                SHA-256 hash verification.
+            </p>
+
+            <a href="{{ url_for('integrity') }}"
+               class="dashboard-btn">
+
+                Check Integrity
+
+            </a>
+
+        </div>
+
+
+        <!-- REPORT INCIDENT -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🚨
+            </div>
+
+            <h2>
+                Report Cyber Incident
+            </h2>
+
+            <p>
+                Report unauthorized access,
+                file tampering and other
+                cyber offences.
+            </p>
+
+            <a href="{{ url_for('report_incident') }}"
+               class="dashboard-btn">
+
+                Report Incident
+
+            </a>
+
+        </div>
+
+
+        <!-- MOBILE SECURITY -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                📱
+            </div>
+
+            <h2>
+                Mobile & Wireless Security
+            </h2>
+
+            <p>
+                Learn about mobile devices,
+                wireless threats and protection
+                techniques.
+            </p>
+
+            <a href="{{ url_for('mobile_security') }}"
+               class="dashboard-btn">
+
+                View Security Guide
+
+            </a>
+
+        </div>
+
+
+        <!-- CYBER LAW -->
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                ⚖️
+            </div>
+
+            <h2>
+                Cyber Law & Compliance
+            </h2>
+
+            <p>
+                Learn about cyber law, data protection,
+                electronic evidence and responsible
+                cybersecurity.
+            </p>
+
+            <a href="{{ url_for('cyber_law') }}"
+               class="dashboard-btn">
+
+                View Cyber Law
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 SecureVault | Cybersecurity Project
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

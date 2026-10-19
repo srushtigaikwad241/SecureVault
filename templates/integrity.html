@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>File Integrity | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🔐 SecureVault
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <h2>🛡️ File Integrity Verification</h2>
+
+            <p>
+                Verify whether your decrypted file has been
+                modified or corrupted.
+            </p>
+
+
+            {% if error %}
+
+                <div class="error">
+                    {{ error }}
+                </div>
+
+            {% endif %}
+
+
+            {% if result %}
+
+                <div class="success">
+                    {{ result }}
+                </div>
+
+            {% endif %}
+
+
+            <form method="POST">
+
+                <label>
+                    Select File
+                </label>
+
+                <select name="file_id" required>
+
+                    <option value="">
+                        Select a file
+                    </option>
+
+                    {% for file in files %}
+
+                        <option value="{{ file.id }}">
+
+                            {{ file.original_filename }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+
+                <button type="submit">
+                    Verify Integrity
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

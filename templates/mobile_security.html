@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile & Wireless Security | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="navbar-left">
+
+            <div class="logo">
+                🔐 SecureVault
+            </div>
+
+            <div class="page-title">
+                Mobile & Wireless Security
+            </div>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="nav-button dashboard-nav-btn">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('logout') }}"
+               class="nav-button logout-nav-btn">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN PAGE
+         ===================================================== -->
+
+    <main class="mobile-security-page">
+
+
+        <!-- =================================================
+             HERO SECTION
+             ================================================= -->
+
+        <section class="mobile-hero">
+
+            <div class="mobile-hero-content">
+
+                <div class="mobile-hero-icon">
+                    📱
+                </div>
+
+                <div>
+
+                    <div class="mobile-label">
+                        SECURITY AWARENESS
+                    </div>
+
+                    <h1>
+                        Mobile & Wireless Security
+                    </h1>
+
+                    <p>
+                        Protect mobile devices, wireless connections,
+                        personal information and sensitive data from
+                        common cybersecurity threats.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             INTRODUCTION
+             ================================================= -->
+
+        <section class="mobile-intro">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h2>
+                        Why Mobile Security Matters
+                    </h2>
+
+                    <p>
+                        Mobile devices store personal and sensitive
+                        information and frequently connect to wireless
+                        networks. Weak security can expose this data
+                        to unauthorized access.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             THREAT SECTION
+             ================================================= -->
+
+        <section class="mobile-threat-section">
+
+            <div class="section-title">
+
+                <span class="section-number">
+                    02
+                </span>
+
+                <div>
+
+                    <h2>
+                        Common Mobile & Wireless Threats
+                    </h2>
+
+                    <p>
+                        Understand the major security risks associated
+                        with mobile devices and wireless communication.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="threat-grid">
+
+
+                <!-- Threat 1 -->
+
+                <div class="threat-card">
+
+                    <div class="threat-icon">
+                        📶
+                    </div>
+
+                    <div class="threat-content">
+
+                        <span class="threat-number">
+                            THREAT 01
+                        </span>
+
+                        <h3>
+                            Insecure Wi-Fi
+                        </h3>
+
+                        <p>
+                            Unsecured wireless networks may expose
+                            sensitive information and increase the risk
+                            of unauthorized network access.
+                        </p>
+
+                        <div class="protection">
+
+                            <strong>
+                                Protection
+                            </strong>
+
+                            <span>
+                                Use trusted and password-protected
+                                wireless networks.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Threat 2 -->
+
+                <div class="threat-card">
+
+                    <div class="threat-icon">
+                        🎣
+                    </div>
+
+                    <div class="threat-content">
+
+                        <span class="threat-number">
+                            THREAT 02
+                        </span>
+
+                        <h3>
+                            Mobile Phishing
+                        </h3>
+
+                        <p>
+                            Attackers may send fake messages, emails
+                            or websites designed to trick users into
+                            revealing sensitive information.
+                        </p>
+
+                        <div class="protection">
+
+                            <strong>
+                                Protection
+                            </strong>
+
+                            <span>
+                                Verify links and never share passwords
+                                or security codes through suspicious
+                                messages.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Threat 3 -->
+
+                <div class="threat-card">
+
+                    <div class="threat-icon">
+                        📲
+                    </div>
+
+                    <div class="threat-content">
+
+                        <span class="threat-number">
+                            THREAT 03
+                        </span>
+
+                        <h3>
+                            Malicious Applications
+                        </h3>
+
+                        <p>
+                            Applications from untrusted sources may
+                            contain malicious software or request
+                            unnecessary permissions.
+                        </p>
+
+                        <div class="protection">
+
+                            <strong>
+                                Protection
+                            </strong>
+
+                            <span>
+                                Install applications from trusted
+                                sources and review permissions.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Threat 4 -->
+
+                <div class="threat-card">
+
+                    <div class="threat-icon">
+                        🔒
+                    </div>
+
+                    <div class="threat-content">
+
+                        <span class="threat-number">
+                            THREAT 04
+                        </span>
+
+                        <h3>
+                            Device Theft or Loss
+                        </h3>
+
+                        <p>
+                            A lost or stolen mobile device can expose
+                            personal information and sensitive files.
+                        </p>
+
+                        <div class="protection">
+
+                            <strong>
+                                Protection
+                            </strong>
+
+                            <span>
+                                Use a strong screen lock and maintain
+                                secure backups.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Threat 5 -->
+
+                <div class="threat-card">
+
+                    <div class="threat-icon">
+                        📡
+                    </div>
+
+                    <div class="threat-content">
+
+                        <span class="threat-number">
+                            THREAT 05
+                        </span>
+
+                        <h3>
+                            Bluetooth Risks
+                        </h3>
+
+                        <p>
+                            Improperly configured Bluetooth connections
+                            can create unnecessary security exposure.
+                        </p>
+
+                        <div class="protection">
+
+                            <strong>
+                                Protection
+                            </strong>
+
+                            <span>
+                                Keep Bluetooth disabled when it is not
+                                required and use trusted connections.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Threat 6 -->
+
+                <div class="threat-card">
+
+                    <div class="threat-icon">
+                        👤
+                    </div>
+
+                    <div class="threat-content">
+
+                        <span class="threat-number">
+                            THREAT 06
+                        </span>
+
+                        <h3>
+                            Social Engineering
+                        </h3>
+
+                        <p>
+                            Attackers may manipulate users into sharing
+                            passwords, verification codes or sensitive
+                            information.
+                        </p>
+
+                        <div class="protection">
+
+                            <strong>
+                                Protection
+                            </strong>
+
+                            <span>
+                                Verify requests before sharing sensitive
+                                information.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECURITY CHECKLIST
+             ================================================= -->
+
+        <section class="mobile-checklist-section">
+
+            <div class="section-title">
+
+                <span class="section-number">
+                    03
+                </span>
+
+                <div>
+
+                    <h2>
+                        Mobile Security Checklist
+                    </h2>
+
+                    <p>
+                        Follow these basic security practices to
+                        protect your mobile device and information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="checklist-grid">
+
+
+                <div class="check-item">
+
+                    <div class="check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h3>
+                            Strong Screen Lock
+                        </h3>
+
+                        <p>
+                            Use a strong PIN, password or supported
+                            biometric authentication.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h3>
+                            Keep Software Updated
+                        </h3>
+
+                        <p>
+                            Install security and operating system
+                            updates regularly.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h3>
+                            Trusted Applications
+                        </h3>
+
+                        <p>
+                            Install applications only from trusted
+                            sources.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h3>
+                            Review Permissions
+                        </h3>
+
+                        <p>
+                            Check what permissions applications request
+                            before granting access.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h3>
+                            Avoid Suspicious Links
+                        </h3>
+
+                        <p>
+                            Do not open unexpected links or attachments
+                            from unknown sources.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h3>
+                            Secure Wireless Networks
+                        </h3>
+
+                        <p>
+                            Prefer trusted networks and avoid sharing
+                            sensitive information over unknown networks.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h3>
+                            Backup Important Data
+                        </h3>
+
+                        <p>
+                            Maintain secure backups of important files
+                            and information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Report Suspicious Activity
+                        </h3>
+
+                        <p>
+                            Report unusual or suspicious security
+                            activity through the appropriate channel.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECUREVAULT CONNECTION
+             ================================================= -->
+
+        <section class="securevault-security">
+
+            <div class="securevault-security-icon">
+                🔐
+            </div>
+
+            <div>
+
+                <span>
+                    SECUREVAULT PROTECTION
+                </span>
+
+                <h2>
+                    Protecting Sensitive Information
+                </h2>
+
+                <p>
+                    SecureVault uses authentication, access control,
+                    encryption, integrity verification and security
+                    monitoring to help protect sensitive files and
+                    security-related information.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BACK TO DASHBOARD
+             ================================================= -->
+
+        <div class="mobile-page-actions">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="mobile-back-btn">
+
+                ← Back to Dashboard
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 SecureVault | Cybersecurity Project
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

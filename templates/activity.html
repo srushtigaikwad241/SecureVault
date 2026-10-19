@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Security Activity | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .activity-page {
+            min-height: calc(100vh - 76px);
+            padding: 55px 6%;
+        }
+
+        .activity-hero {
+            max-width: 1450px;
+            margin: 0 auto 30px;
+            padding: 34px 40px;
+            background: linear-gradient(
+                135deg,
+                #18284b,
+                #1e293b
+            );
+            border: 1px solid #334155;
+            border-radius: 20px;
+        }
+
+        .activity-hero h1 {
+            margin: 0;
+            color: #f8fafc;
+            font-size: 38px;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .activity-hero p {
+            display: inline-block;
+            color: #94a3b8;
+            font-size: 17px;
+            margin: 0;
+        }
+
+        .activity-container {
+            max-width: 1450px;
+            margin: 0 auto;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .activity-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .activity-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 950px;
+        }
+
+        .activity-table thead {
+            background: #0f172a;
+        }
+
+        .activity-table th {
+            padding: 18px 20px;
+            text-align: left;
+            color: #93c5fd;
+            font-size: 13px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #334155;
+            white-space: nowrap;
+        }
+
+        .activity-table td {
+            padding: 18px 20px;
+            color: #cbd5e1;
+            font-size: 14px;
+            border-bottom: 1px solid #334155;
+            vertical-align: middle;
+        }
+
+        .activity-table tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        .activity-table tbody tr:hover {
+            background: #26354d;
+        }
+
+        .activity-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .activity-user {
+            color: #f8fafc;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .activity-action {
+            display: inline-block;
+            padding: 6px 11px;
+            border-radius: 8px;
+            background: #172554;
+            border: 1px solid #1d4ed8;
+            color: #93c5fd;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .activity-description {
+            color: #cbd5e1;
+            max-width: 420px;
+            line-height: 1.5;
+        }
+
+        .activity-ip {
+            color: #94a3b8;
+            font-family: monospace;
+            white-space: nowrap;
+        }
+
+        .activity-date {
+            color: #94a3b8;
+            white-space: nowrap;
+        }
+
+        .no-activity {
+            padding: 55px 20px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        .activity-footer {
+            max-width: 1450px;
+            margin: 25px auto 0;
+            text-align: right;
+        }
+
+        .activity-back-btn {
+            display: inline-block;
+            padding: 11px 18px;
+            border-radius: 9px;
+            text-decoration: none;
+            color: #dbeafe;
+            background: #172554;
+            border: 1px solid #1d4ed8;
+            transition: 0.2s ease;
+        }
+
+        .activity-back-btn:hover {
+            background: #1e3a8a;
+        }
+
+        @media (max-width: 900px) {
+
+            .activity-page {
+                padding: 35px 4%;
+            }
+
+            .activity-hero {
+                padding: 28px;
+            }
+
+            .activity-hero h1 {
+                display: block;
+                font-size: 30px;
+                margin-bottom: 8px;
+            }
+
+            .activity-hero p {
+                display: block;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🔐 SecureVault
+        </div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="activity-page">
+
+        <!-- HERO -->
+        <section class="activity-hero">
+
+            <h1>Security Activity</h1>
+
+            <p>
+                Monitor recent SecureVault security activities.
+            </p>
+
+        </section>
+
+
+        <!-- ACTIVITY TABLE -->
+        <section class="activity-container">
+
+            <div class="activity-table-wrapper">
+
+                <table class="activity-table">
+
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Action</th>
+                            <th>Description</th>
+                            <th>IP Address</th>
+                            <th>Date &amp; Time</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for activity in activities %}
+
+                        <tr>
+
+                            <!-- USER -->
+                            <td class="activity-user">
+                                {{ activity.user_name or "System" }}
+                            </td>
+
+
+                            <!-- ACTION -->
+                            <td>
+                                <span class="activity-action">
+                                    {{ activity.action }}
+                                </span>
+                            </td>
+
+
+                            <!-- DESCRIPTION -->
+                            <td class="activity-description">
+                                {{ activity.description or "No description available." }}
+                            </td>
+
+
+                            <!-- IP ADDRESS -->
+                            <td class="activity-ip">
+                                {{ activity.ip_address or "N/A" }}
+                            </td>
+
+
+                            <!-- DATE -->
+                            <td class="activity-date">
+                                {{ activity.created_at }}
+                            </td>
+
+                        </tr>
+
+                        {% else %}
+
+                        <tr>
+                            <td colspan="5">
+
+                                <div class="no-activity">
+                                    No security activity found.
+                                </div>
+
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- BACK BUTTON -->
+        <div class="activity-footer">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="activity-back-btn">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        © 2026 SecureVault | Cybersecurity Project
+
+    </footer>
+
+</body>
+</html>

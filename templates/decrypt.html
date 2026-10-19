@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Decrypt File | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">🔐 SecureVault</div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <h2>🔓 Decrypt File</h2>
+
+            <p>
+                Select an encrypted .enc file and enter your AES-256 key.
+            </p>
+
+            {% if error %}
+                <div class="error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            {% if success %}
+                <div class="success">
+                    {{ success }}
+                </div>
+            {% endif %}
+
+            <form method="POST">
+
+                <label>Encrypted File</label>
+
+                <select name="encrypted_file" required>
+
+                    <option value="">
+                        Select encrypted file
+                    </option>
+
+                    {% for file in files %}
+
+                        <option value="{{ file.encrypted_filename }}">
+                            {{ file.encrypted_filename }}
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <label>AES-256 Key</label>
+
+                <input
+                    type="text"
+                    name="encryption_key"
+                    placeholder="Enter Base64 encryption key"
+                    required
+                >
+
+                <button type="submit">
+                    Decrypt File
+                </button>
+
+            </form>
+
+            {% if decrypted_filename %}
+
+                <div class="success">
+
+                    File decrypted successfully!
+
+                    <br><br>
+
+                    <a href="{{ url_for(
+                        'download_decrypted',
+                        filename=decrypted_filename
+                    ) }}">
+                        Download Decrypted File
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>

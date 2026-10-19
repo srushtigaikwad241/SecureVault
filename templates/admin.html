@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="navbar-left">
+
+            <div class="logo">
+                🔐 SecureVault
+            </div>
+
+            <div class="page-title">
+                Admin Security Dashboard
+            </div>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="nav-button dashboard-nav-btn">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('logout') }}"
+               class="nav-button logout-nav-btn">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="admin-page">
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="admin-hero">
+
+            <div class="admin-hero-icon">
+                🛡️
+            </div>
+
+            <div>
+
+                <span class="admin-label">
+                    ADMINISTRATOR PANEL
+                </span>
+
+                <h1>
+                    Security Dashboard
+                </h1>
+
+                <p>
+                    Monitor users, encrypted files, login attempts,
+                    security alerts and system activity.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STATISTICS
+             ================================================= -->
+
+        <section class="admin-stats">
+
+
+            <!-- Users -->
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <span>
+                        TOTAL USERS
+                    </span>
+
+                    <strong>
+                        {{ total_users }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Files -->
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    🔐
+                </div>
+
+                <div>
+
+                    <span>
+                        ENCRYPTED FILES
+                    </span>
+
+                    <strong>
+                        {{ total_files }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Failed Logins -->
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon warning">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <span>
+                        FAILED LOGINS
+                    </span>
+
+                    <strong>
+                        {{ failed_logins }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Security Alerts -->
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon danger">
+                    🚨
+                </div>
+
+                <div>
+
+                    <span>
+                        SECURITY ALERTS
+                    </span>
+
+                    <strong>
+                        {{ total_alerts }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             ADMIN ACTIONS
+             ================================================= -->
+
+        <section class="admin-section">
+
+            <div class="admin-section-heading">
+
+                <span class="admin-section-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h2>
+                        Security Management
+                    </h2>
+
+                    <p>
+                        Access important SecureVault administration
+                        and security monitoring functions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-action-grid">
+
+
+                <!-- Security Alerts -->
+
+                <div class="admin-action-card">
+
+                    <div class="admin-action-icon">
+                        🚨
+                    </div>
+
+                    <h3>
+                        Security Alerts
+                    </h3>
+
+                    <p>
+                        Review suspicious activities and
+                        security warnings detected by the system.
+                    </p>
+
+                    <a href="{{ url_for('security_alerts') }}"
+                       class="admin-action-btn">
+                        View Security Alerts
+                    </a>
+
+                </div>
+
+
+                <!-- Activity -->
+
+                <div class="admin-action-card">
+
+                    <div class="admin-action-icon">
+                        📋
+                    </div>
+
+                    <h3>
+                        Security Activity
+                    </h3>
+
+                    <p>
+                        Monitor login activity, encryption,
+                        decryption and other security events.
+                    </p>
+
+                    <a href="{{ url_for('activity') }}"
+                       class="admin-action-btn">
+                        View Activity
+                    </a>
+
+                </div>
+
+
+                <!-- Incidents -->
+
+                <div class="admin-action-card">
+
+                    <div class="admin-action-icon">
+                        🚨
+                    </div>
+
+                    <h3>
+                        Cyber Incidents
+                    </h3>
+
+                    <p>
+                        Review reported cyber offences,
+                        investigate incidents and update their status.
+                    </p>
+
+                    <a href="{{ url_for('admin_incidents') }}"
+                       class="admin-action-btn">
+                        Manage Incidents
+                    </a>
+
+                </div>
+
+
+                <!-- Dashboard -->
+
+                <div class="admin-action-card">
+
+                    <div class="admin-action-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        User Dashboard
+                    </h3>
+
+                    <p>
+                        Return to the main SecureVault dashboard
+                        and access user security features.
+                    </p>
+
+                    <a href="{{ url_for('dashboard') }}"
+                       class="admin-action-btn">
+                        Open Dashboard
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RECENT SECURITY ACTIVITY
+             ================================================= -->
+
+        <section class="admin-section">
+
+            <div class="admin-section-heading">
+
+                <span class="admin-section-number">
+                    02
+                </span>
+
+                <div>
+
+                    <h2>
+                        Recent Security Activity
+                    </h2>
+
+                    <p>
+                        Latest security-related events recorded
+                        by SecureVault.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {% if recent_activity %}
+
+            <div class="admin-activity-table">
+
+                <div class="admin-table-row admin-table-header">
+
+                    <div>
+                        ACTION
+                    </div>
+
+                    <div>
+                        DESCRIPTION
+                    </div>
+
+                    <div>
+                        IP ADDRESS
+                    </div>
+
+                    <div>
+                        DATE & TIME
+                    </div>
+
+                </div>
+
+
+                {% for activity in recent_activity %}
+
+                <div class="admin-table-row">
+
+                    <div>
+
+                        <span class="activity-action">
+                            {{ activity.action }}
+                        </span>
+
+                    </div>
+
+                    <div>
+                        {{ activity.description or "No description" }}
+                    </div>
+
+                    <div>
+                        {{ activity.ip_address or "Not available" }}
+                    </div>
+
+                    <div>
+                        {{ activity.created_at }}
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            {% else %}
+
+            <div class="admin-empty">
+
+                <div>
+                    ✓
+                </div>
+
+                <h3>
+                    No Recent Security Activity
+                </h3>
+
+                <p>
+                    No security events have been recorded yet.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </section>
+
+
+        <!-- =================================================
+             SECURITY CONTROLS
+             ================================================= -->
+
+        <section class="admin-section">
+
+            <div class="admin-section-heading">
+
+                <span class="admin-section-number">
+                    03
+                </span>
+
+                <div>
+
+                    <h2>
+                        SecureVault Security Controls
+                    </h2>
+
+                    <p>
+                        Security mechanisms currently implemented
+                        in the system.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="security-controls-grid">
+
+
+                <div class="security-control">
+
+                    <span class="control-icon">
+                        🔐
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            AES-256-GCM
+                        </h3>
+
+                        <p>
+                            File encryption
+                        </p>
+
+                    </div>
+
+                    <span class="control-status">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="security-control">
+
+                    <span class="control-icon">
+                        #️⃣
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            SHA-256
+                        </h3>
+
+                        <p>
+                            File integrity verification
+                        </p>
+
+                    </div>
+
+                    <span class="control-status">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="security-control">
+
+                    <span class="control-icon">
+                        👤
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Authentication
+                        </h3>
+
+                        <p>
+                            User identity verification
+                        </p>
+
+                    </div>
+
+                    <span class="control-status">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="security-control">
+
+                    <span class="control-icon">
+                        📋
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Audit Logging
+                        </h3>
+
+                        <p>
+                            Security activity monitoring
+                        </p>
+
+                    </div>
+
+                    <span class="control-status">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="security-control">
+
+                    <span class="control-icon">
+                        🚨
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Security Alerts
+                        </h3>
+
+                        <p>
+                            Suspicious activity detection
+                        </p>
+
+                    </div>
+
+                    <span class="control-status">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="security-control">
+
+                    <span class="control-icon">
+                        🛡️
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Access Control
+                        </h3>
+
+                        <p>
+                            Role-based authorization
+                        </p>
+
+                    </div>
+
+                    <span class="control-status">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BACK BUTTON
+             ================================================= -->
+
+        <div class="admin-page-actions">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="admin-back-btn">
+
+                ← Back to Dashboard
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 SecureVault | Administrator Panel
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Cyber Incident | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+         ========================= -->
+
+    <nav class="navbar">
+
+        <div class="navbar-left">
+
+            <div class="logo">
+                🔐 SecureVault
+            </div>
+
+            <div class="page-title">
+                Cyber Incident Reporting
+            </div>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="nav-button dashboard-nav-btn">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('logout') }}"
+               class="nav-button logout-nav-btn">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         INCIDENT PAGE
+         ========================= -->
+
+    <main class="incident-page">
+
+        <div class="incident-header">
+
+            <h1>
+                Report Cyber Incident
+            </h1>
+
+            <p>
+                Report suspicious or potentially harmful cybersecurity activity.
+            </p>
+
+        </div>
+
+
+        <div class="incident-form-card">
+
+            <form method="POST">
+
+                <div class="form-group">
+
+                    <label for="offence_type">
+                        Cyber Offence Type
+                    </label>
+
+                    <select
+                        id="offence_type"
+                        name="offence_type"
+                        required>
+
+                        <option value="">
+                            Select offence type
+                        </option>
+
+                        <option value="Unauthorized Access">
+                            Unauthorized Access
+                        </option>
+
+                        <option value="Data Theft">
+                            Data Theft
+                        </option>
+
+                        <option value="File Tampering">
+                            File Tampering
+                        </option>
+
+                        <option value="Account Compromise">
+                            Account Compromise
+                        </option>
+
+                        <option value="Phishing">
+                            Phishing
+                        </option>
+
+                        <option value="Malware">
+                            Malware
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="severity">
+                        Severity
+                    </label>
+
+                    <select
+                        id="severity"
+                        name="severity"
+                        required>
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                        <option value="Medium" selected>
+                            Medium
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                        <option value="Critical">
+                            Critical
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Incident Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Describe what happened..."
+                        required></textarea>
+
+                </div>
+
+
+                <div class="incident-actions">
+
+                    <button
+                        type="submit"
+                        class="dashboard-btn">
+                        🚨 Submit Incident Report
+                    </button>
+
+                    <a
+                        href="{{ url_for('dashboard') }}"
+                        class="secondary-btn">
+                        ← Back to Dashboard
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 SecureVault | Cybersecurity Project
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

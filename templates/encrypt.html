@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Encrypt File | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🔐 SecureVault
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<section class="dashboard">
+
+    <h1>🔒 Encrypt File</h1>
+
+    <p>
+        Upload a file and SecureVault will encrypt it
+        using AES-256-GCM.
+    </p>
+
+
+    {% if error %}
+
+    <div class="error">
+        {{ error }}
+    </div>
+
+    {% endif %}
+
+
+    {% if success %}
+
+    <div class="success">
+
+        <h3>{{ success }}</h3>
+
+        <p>
+            Encrypted file:
+            <strong>{{ encrypted_filename }}</strong>
+        </p>
+
+        <p>
+            <strong>Encryption Key:</strong>
+        </p>
+
+        <textarea
+            rows="4"
+            style="width:100%;"
+            readonly>{{ encryption_key }}</textarea>
+
+        <p>
+            Keep this key secure. It will be required
+            for authorized decryption.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <div class="dashboard-card">
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            <label>Select File</label>
+
+            <input
+                type="file"
+                name="file"
+                required
+            >
+
+            <br><br>
+
+            <button type="submit">
+                🔒 Encrypt File
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cyber Law & Compliance | SecureVault</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="navbar-left">
+
+            <div class="logo">
+                🔐 SecureVault
+            </div>
+
+            <div class="page-title">
+                Cyber Law & Compliance
+            </div>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="nav-button dashboard-nav-btn">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('logout') }}"
+               class="nav-button logout-nav-btn">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN PAGE
+         ===================================================== -->
+
+    <main class="cyber-law-page">
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="law-hero">
+
+            <div class="law-hero-content">
+
+                <div class="law-hero-icon">
+                    ⚖️
+                </div>
+
+                <div>
+
+                    <div class="law-label">
+                        CYBERSECURITY & COMPLIANCE
+                    </div>
+
+                    <h1>
+                        Cyber Law & Compliance
+                    </h1>
+
+                    <p>
+                        Understand the legal responsibilities related
+                        to cybersecurity, data protection, electronic
+                        records and responsible handling of cyber incidents.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             INTRODUCTION
+             ================================================= -->
+
+        <section class="law-intro">
+
+            <div class="law-section-heading">
+
+                <span class="law-section-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h2>
+                        What is Cyber Law?
+                    </h2>
+
+                    <p>
+                        Cyber law refers to laws and legal principles
+                        that apply to computers, digital systems,
+                        electronic information, online activities and
+                        cyber offences.
+                    </p>
+
+                    <p>
+                        Cybersecurity systems should not only protect
+                        information technically, but should also support
+                        responsible access, privacy, evidence handling
+                        and incident reporting.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             INDIAN CYBER LAW
+             ================================================= -->
+
+        <section class="law-section">
+
+            <div class="law-title">
+
+                <span class="law-section-number">
+                    02
+                </span>
+
+                <div>
+
+                    <h2>
+                        Important Legal Frameworks
+                    </h2>
+
+                    <p>
+                        Some important Indian legal frameworks relevant
+                        to digital security and cyber activities include:
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="law-grid">
+
+
+                <!-- IT Act -->
+
+                <div class="law-card">
+
+                    <div class="law-card-icon">
+                        💻
+                    </div>
+
+                    <div class="law-card-content">
+
+                        <span class="law-number">
+                            LAW 01
+                        </span>
+
+                        <h3>
+                            Information Technology Act, 2000
+                        </h3>
+
+                        <p>
+                            The Information Technology Act provides an
+                            important legal framework for electronic
+                            records, electronic transactions and various
+                            computer-related offences in India.
+                        </p>
+
+                        <div class="law-purpose">
+
+                            <strong>
+                                SecureVault Connection
+                            </strong>
+
+                            <span>
+                                Helps establish the importance of
+                                protecting computer systems and digital
+                                information from unauthorized activities.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DPDP -->
+
+                <div class="law-card">
+
+                    <div class="law-card-icon">
+                        🔐
+                    </div>
+
+                    <div class="law-card-content">
+
+                        <span class="law-number">
+                            LAW 02
+                        </span>
+
+                        <h3>
+                            Digital Personal Data Protection Act, 2023
+                        </h3>
+
+                        <p>
+                            This framework addresses the processing and
+                            protection of digital personal data and
+                            responsibilities associated with personal
+                            information.
+                        </p>
+
+                        <div class="law-purpose">
+
+                            <strong>
+                                SecureVault Connection
+                            </strong>
+
+                            <span>
+                                SecureVault demonstrates protection of
+                                sensitive information through access
+                                control and encryption.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BNS -->
+
+                <div class="law-card">
+
+                    <div class="law-card-icon">
+                        ⚠️
+                    </div>
+
+                    <div class="law-card-content">
+
+                        <span class="law-number">
+                            LAW 03
+                        </span>
+
+                        <h3>
+                            Bharatiya Nyaya Sanhita, 2023
+                        </h3>
+
+                        <p>
+                            The Bharatiya Nyaya Sanhita is India's
+                            principal criminal law framework and may
+                            be relevant when digital activities are
+                            connected with criminal offences.
+                        </p>
+
+                        <div class="law-purpose">
+
+                            <strong>
+                                SecureVault Connection
+                            </strong>
+
+                            <span>
+                                The incident reporting module supports
+                                documentation of suspected cyber incidents.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CERT-In -->
+
+                <div class="law-card">
+
+                    <div class="law-card-icon">
+                        🏛️
+                    </div>
+
+                    <div class="law-card-content">
+
+                        <span class="law-number">
+                            SECURITY 04
+                        </span>
+
+                        <h3>
+                            CERT-In Directions
+                        </h3>
+
+                        <p>
+                            CERT-In directions provide cybersecurity
+                            requirements and guidance for organizations
+                            concerning cyber incidents, security
+                            practices and incident information.
+                        </p>
+
+                        <div class="law-purpose">
+
+                            <strong>
+                                SecureVault Connection
+                            </strong>
+
+                            <span>
+                                Audit logs and incident records help
+                                organizations maintain useful security
+                                information.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RESPONSIBLE CYBERSECURITY
+             ================================================= -->
+
+        <section class="law-section">
+
+            <div class="law-title">
+
+                <span class="law-section-number">
+                    03
+                </span>
+
+                <div>
+
+                    <h2>
+                        Responsible Cybersecurity Practices
+                    </h2>
+
+                    <p>
+                        Users and organizations should follow
+                        responsible practices when handling digital
+                        systems and information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="responsibility-grid">
+
+
+                <div class="responsibility-card">
+
+                    <div class="responsibility-icon">
+                        🔑
+                    </div>
+
+                    <h3>
+                        Authorized Access
+                    </h3>
+
+                    <p>
+                        Access systems and files only when you have
+                        appropriate authorization.
+                    </p>
+
+                </div>
+
+
+                <div class="responsibility-card">
+
+                    <div class="responsibility-icon">
+                        🛡️
+                    </div>
+
+                    <h3>
+                        Protect Sensitive Data
+                    </h3>
+
+                    <p>
+                        Use appropriate security controls to protect
+                        confidential and personal information.
+                    </p>
+
+                </div>
+
+
+                <div class="responsibility-card">
+
+                    <div class="responsibility-icon">
+                        📋
+                    </div>
+
+                    <h3>
+                        Maintain Records
+                    </h3>
+
+                    <p>
+                        Maintain appropriate audit and incident records
+                        to support accountability and investigation.
+                    </p>
+
+                </div>
+
+
+                <div class="responsibility-card">
+
+                    <div class="responsibility-icon">
+                        🚨
+                    </div>
+
+                    <h3>
+                        Report Incidents
+                    </h3>
+
+                    <p>
+                        Suspicious or unauthorized activity should be
+                        reported through the appropriate process.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECUREVAULT COMPLIANCE MAPPING
+             ================================================= -->
+
+        <section class="law-section">
+
+            <div class="law-title">
+
+                <span class="law-section-number">
+                    04
+                </span>
+
+                <div>
+
+                    <h2>
+                        SecureVault Compliance Controls
+                    </h2>
+
+                    <p>
+                        SecureVault demonstrates several technical
+                        controls that support responsible information
+                        security.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="compliance-table">
+
+
+                <div class="compliance-row compliance-header">
+
+                    <div>
+                        Security Control
+                    </div>
+
+                    <div>
+                        Purpose
+                    </div>
+
+                </div>
+
+
+                <div class="compliance-row">
+
+                    <div>
+                        🔐 AES-256-GCM Encryption
+                    </div>
+
+                    <div>
+                        Protects sensitive files from unauthorized access.
+                    </div>
+
+                </div>
+
+
+                <div class="compliance-row">
+
+                    <div>
+                        🛡️ Access Control
+                    </div>
+
+                    <div>
+                        Restricts access to authorized users and resources.
+                    </div>
+
+                </div>
+
+
+                <div class="compliance-row">
+
+                    <div>
+                        #️⃣ SHA-256 Integrity
+                    </div>
+
+                    <div>
+                        Helps verify whether stored file content has changed.
+                    </div>
+
+                </div>
+
+
+                <div class="compliance-row">
+
+                    <div>
+                        📋 Audit Logs
+                    </div>
+
+                    <div>
+                        Records important security-related activities.
+                    </div>
+
+                </div>
+
+
+                <div class="compliance-row">
+
+                    <div>
+                        🚨 Incident Reporting
+                    </div>
+
+                    <div>
+                        Supports documentation and management of security incidents.
+                    </div>
+
+                </div>
+
+
+                <div class="compliance-row">
+
+                    <div>
+                        👤 User Authentication
+                    </div>
+
+                    <div>
+                        Helps verify the identity of users accessing the system.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             COMPLIANCE CHECKLIST
+             ================================================= -->
+
+        <section class="law-checklist-section">
+
+            <div class="law-title">
+
+                <span class="law-section-number">
+                    05
+                </span>
+
+                <div>
+
+                    <h2>
+                        Cybersecurity Compliance Checklist
+                    </h2>
+
+                    <p>
+                        Basic practices that should be considered when
+                        designing and operating a secure digital system.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="law-checklist">
+
+
+                <div class="law-check-item">
+
+                    <div class="law-check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Authenticate Users
+                        </h3>
+
+                        <p>
+                            Verify users before allowing access to
+                            protected resources.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="law-check-item">
+
+                    <div class="law-check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Apply Access Control
+                        </h3>
+
+                        <p>
+                            Give users only the access they need.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="law-check-item">
+
+                    <div class="law-check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Protect Sensitive Information
+                        </h3>
+
+                        <p>
+                            Apply encryption and other suitable security
+                            controls to sensitive data.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="law-check-item">
+
+                    <div class="law-check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Maintain Audit Records
+                        </h3>
+
+                        <p>
+                            Record relevant security activities for
+                            monitoring and investigation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="law-check-item">
+
+                    <div class="law-check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Preserve Data Integrity
+                        </h3>
+
+                        <p>
+                            Use integrity verification mechanisms to
+                            detect unexpected changes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="law-check-item">
+
+                    <div class="law-check-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Report Security Incidents
+                        </h3>
+
+                        <p>
+                            Follow appropriate organizational and legal
+                            reporting procedures when incidents occur.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             IMPORTANT NOTE
+             ================================================= -->
+
+        <section class="legal-note">
+
+            <div class="legal-note-icon">
+                ℹ️
+            </div>
+
+            <div>
+
+                <span>
+                    IMPORTANT
+                </span>
+
+                <h2>
+                    Educational Information
+                </h2>
+
+                <p>
+                    This module is provided for cybersecurity education
+                    and project demonstration. Cyber laws and regulatory
+                    requirements can change, and their applicability
+                    depends on the specific circumstances of a case.
+                    For actual legal matters, consult the applicable
+                    law and a qualified legal professional.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECUREVAULT CONNECTION
+             ================================================= -->
+
+        <section class="law-security-banner">
+
+            <div class="law-security-icon">
+                ⚖️
+            </div>
+
+            <div>
+
+                <span>
+                    SECUREVAULT & CYBER LAW
+                </span>
+
+                <h2>
+                    Security + Responsibility
+                </h2>
+
+                <p>
+                    SecureVault combines technical security controls
+                    with responsible access, monitoring, integrity
+                    verification and incident documentation.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BACK BUTTON
+             ================================================= -->
+
+        <div class="law-page-actions">
+
+            <a href="{{ url_for('dashboard') }}"
+               class="law-back-btn">
+
+                ← Back to Dashboard
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 SecureVault | Cybersecurity Project
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
